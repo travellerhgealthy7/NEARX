@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react-native",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["react", "react-native"],
+    "baseUrl": ".",
+    "paths": {
+      "@nearx/api-client": ["../../packages/api-client/src"]
+    }
+  },
+  "extends": "expo/tsconfig.base",
+  "include": ["**/*.ts", "**/*.tsx", "../../packages/api-client/src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

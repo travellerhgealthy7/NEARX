@@ -1,0 +1,74 @@
+{
+  "compilerOptions": {
+    /* Base Options */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noEmit": true,
+
+    /* Strict Type-Checking */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Module Resolution */
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@nearx/api-client": ["../../packages/api-client/src"],
+      "@/*": ["./src/*"]
+    },
+
+    /* Libs */
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["jest", "node"],
+
+    /* Features */
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Next.js */
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/api-client/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist"
+  ]
+}

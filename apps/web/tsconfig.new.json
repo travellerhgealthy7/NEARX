@@ -1,0 +1,67 @@
+{
+  "compilerOptions": {
+    /* Base Options */
+    "target": "es2020",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@nearx/api-client": ["../../packages/api-client/src"]
+    },
+
+    /* Type Checking */
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+
+    /* Next.js Plugin */
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/api-client/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist"
+  ]
+}
