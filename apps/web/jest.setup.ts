@@ -1,16 +1,16 @@
 // Jest setup file for Next.js
 import '@testing-library/jest-dom';
+import React, { ReactNode } from 'react';
 import { TextEncoder, TextDecoder } from 'util';
+
+const Wrapper: React.FC<{ children: ReactNode }> = ({ children }) =>
+  React.createElement(React.Fragment, null, children);
 
 // Mock next/head
 jest.mock('next/head', () => {
   return {
     __esModule: true,
-    default: ({
-      children,
-    }: {
-      children: Array<React.ReactElement>;
-    }) => <>{children}</>,
+    default: Wrapper,
   };
 });
 
@@ -20,10 +20,11 @@ jest.mock('next/router', () => require('next-router-mock'));
 // Mock next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img {...props} alt={props.alt} />;
-  },
+  default: (props: any) =>
+    React.createElement('img', {
+      ...props,
+      alt: props.alt,
+    }),
 }));
 
 // Add TextEncoder/TextDecoder for JSDOM

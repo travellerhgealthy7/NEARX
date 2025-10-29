@@ -26,6 +26,17 @@ module.exports = {
       },
     },
     {
+      files: ['apps/backend/**/*.spec.ts', 'apps/backend/**/__tests__/**/*.ts'],
+      rules: {
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+      },
+    },
+    {
       files: ['apps/web/**/*.{ts,tsx}'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
@@ -73,6 +84,26 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
+      },
+    },
+    {
+      files: ['packages/**/*.{ts,tsx}'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['./packages/*/tsconfig.json'],
+        tsconfigRootDir: __dirname,
+      },
+      env: {
+        node: true,
+        es2022: true,
+      },
+      extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'prettier',
+      ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'warn',
       },
     },
   ],

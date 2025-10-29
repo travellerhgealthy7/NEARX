@@ -62,4 +62,9 @@ export class IdentityService {
       user: this.sanitizeUser(existing),
     };
   }
+
+  getUserProfile(userId: string) {
+    const user = this.users.get(userId);
+    return user ? this.sanitizeUser(user) : undefined;
+  }
 }

@@ -4,7 +4,7 @@ import { FormEvent, useState } from 'react';
 import { createNearxApiClient, type LoginPayload, type NearxApiClient } from '@nearx/api-client';
 
 export default function HomePage() {
-  const [baseUrl, setBaseUrl] = useState('http://localhost:3000/api');
+  const [baseUrl, setBaseUrl] = useState('https://nearx-backend-r5u3n7ly6-travellershealth7-2672s-projects.vercel.app/api');
   const [email, setEmail] = useState('operator@example.com');
   const [password, setPassword] = useState('nearx123');
   const [status, setStatus] = useState<string | null>(null);

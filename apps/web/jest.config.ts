@@ -1,4 +1,3 @@
-import type { Config } from 'jest';
 import nextJest from 'next/jest';
 
 const createJestConfig = nextJest({
@@ -6,7 +5,7 @@ const createJestConfig = nextJest({
   dir: './', 
 });
 
-const customJestConfig: Config = {
+const customJestConfig = {
   // Add more setup options before each test
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   

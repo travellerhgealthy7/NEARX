@@ -1,11 +1,11 @@
 {
   "name": "nearx-monorepo",
-  "private": true,
   "version": "0.1.0",
   "description": "NEARX unified platform monorepo",
   "scripts": {
     "dev:backend": "pnpm --filter @nearx/backend start:dev",
     "build": "pnpm -r build",
+    "build:web": "pnpm --filter @nearx/web build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "lint:fix": "pnpm -r lint -- --fix",
@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
+    "@eslint/js": "^8.57.1",
+    "@next/eslint-plugin-next": "^14.2.5",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "@types/node": "^20.12.12",
@@ -33,9 +35,14 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-next": "^14.2.5",
     "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-unused-imports": "^3.2.0",
+    "globals": "^15.6.0",
     "husky": "^9.0.11",
-    "prettier": "^3.3.2"
+    "prettier": "^3.3.2",
+    "typescript-eslint": "^7.13.1"
   }
 }
