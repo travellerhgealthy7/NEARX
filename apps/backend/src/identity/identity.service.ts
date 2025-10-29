@@ -1,14 +1,21 @@
-import { BadRequestException, ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, OnModuleInit, UnauthorizedException } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { CreateUserDto, LoginDto } from './dto';
 
 @Injectable()
-export class IdentityService {
+export class IdentityService implements OnModuleInit {
   private readonly users = new Map<string, (CreateUserDto & { id: string })>();
   private readonly userIndex = new Map<string, string>();
 
-  constructor() {
-    // Initialize demo user for testing
+  onModuleInit() {
+    this.ensureDemoUser();
+  }
+
+  private ensureDemoUser() {
+    if (this.users.has('demo-user-id')) {
+      return;
+    }
+
     const demoUser = {
       id: 'demo-user-id',
       firstName: 'Demo',
@@ -17,6 +24,7 @@ export class IdentityService {
       phoneNumber: undefined,
       password: 'nearx123',
     };
+
     this.users.set(demoUser.id, demoUser);
     this.userIndex.set(demoUser.email, demoUser.id);
   }
@@ -29,20 +37,6 @@ export class IdentityService {
   }
 
   getHealthStatus() {
-    // Ensure demo user exists (in case constructor didn't run)
-    if (!this.users.has('demo-user-id')) {
-      const demoUser = {
-        id: 'demo-user-id',
-        firstName: 'Demo',
-        lastName: 'Operator',
-        email: 'operator@example.com',
-        phoneNumber: undefined,
-        password: 'nearx123',
-      };
-      this.users.set(demoUser.id, demoUser);
-      this.userIndex.set(demoUser.email, demoUser.id);
-    }
-    
     return {
       service: 'identity',
       status: 'ok',
@@ -71,20 +65,8 @@ export class IdentityService {
   }
 
   login(payload: LoginDto) {
-    // Ensure demo user exists
-    if (!this.users.has('demo-user-id')) {
-      const demoUser = {
-        id: 'demo-user-id',
-        firstName: 'Demo',
-        lastName: 'Operator',
-        email: 'operator@example.com',
-        phoneNumber: undefined,
-        password: 'nearx123',
-      };
-      this.users.set(demoUser.id, demoUser);
-      this.userIndex.set(demoUser.email, demoUser.id);
-    }
-    
+    this.ensureDemoUser();
+
     const contact = payload.email ?? payload.phoneNumber;
 
     if (!contact) {
