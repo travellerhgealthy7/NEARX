@@ -7,6 +7,20 @@ export class IdentityService {
   private readonly users = new Map<string, (CreateUserDto & { id: string })>();
   private readonly userIndex = new Map<string, string>();
 
+  constructor() {
+    // Initialize demo user for testing
+    const demoUser = {
+      id: 'demo-user-id',
+      firstName: 'Demo',
+      lastName: 'Operator',
+      email: 'operator@example.com',
+      phoneNumber: null,
+      password: 'nearx123',
+    };
+    this.users.set(demoUser.id, demoUser);
+    this.userIndex.set(demoUser.email, demoUser.id);
+  }
+
   private sanitizeUser(user: CreateUserDto & { id: string }) {
     const { password, ...rest } = user;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
