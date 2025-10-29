@@ -5,14 +5,12 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  // Enable CORS for frontend
+  // Enable CORS for all origins
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'https://nearx-travellershealth7-2672s-projects.vercel.app',
-      /\.vercel\.app$/,
-    ],
+    origin: true,
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
   
   app.useGlobalPipes(
