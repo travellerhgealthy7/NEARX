@@ -14,7 +14,7 @@ export class IdentityService {
       firstName: 'Demo',
       lastName: 'Operator',
       email: 'operator@example.com',
-      phoneNumber: null,
+      phoneNumber: undefined,
       password: 'nearx123',
     };
     this.users.set(demoUser.id, demoUser);
